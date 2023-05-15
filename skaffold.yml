@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2alpha3
+kind: Config
+build:
+  local:
+    push: false
+  artifacts:
+    - image: harikrishnanpnr/makeituser
+      context: user-srv
+      docker:
+        dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/*
