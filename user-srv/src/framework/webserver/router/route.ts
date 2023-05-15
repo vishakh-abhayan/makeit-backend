@@ -13,7 +13,7 @@ app.route('/api/test/newone').get((req,res)=>{
 })
 app.route('/api/test/second').get((req,res)=>{
     console.log("working second");
-    res.send("test second")
+    res.send("test 3")
 })
 
 } 
