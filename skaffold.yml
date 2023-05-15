@@ -1,5 +1,9 @@
-apiVersion: skaffold/v2alpha3
+apiVersion: skaffold/v2beta12
 kind: Config
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/*
 build:
   local:
     push: false
@@ -8,7 +12,7 @@ build:
       context: user-srv
       docker:
         dockerfile: Dockerfile
-deploy:
-  kubectl:
-    manifests:
-      - ./infra/*
+      sync:
+        manual:
+          - src: "src/**/*.ts"
+            dest: "."
