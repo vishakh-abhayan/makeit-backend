@@ -11,5 +11,9 @@ app.route('/api/test/newone').get((req,res)=>{
     console.log("working two sample");
     res.send("test working")
 })
+app.route('/api/test/second').get((req,res)=>{
+    console.log("working second");
+    res.send("test second")
+})
 
 } 
