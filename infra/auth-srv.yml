@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-deployment
+  name: auth-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user
+      app: auth
   template:
     metadata:
       labels:
-        app: user
+        app: auth
     spec:
       containers:
-      - name: user-container
-        image: harikrishnanpnr/makeituser:latest
+      - name: auth-container
+        image: harikrishnanpnr/makeitauth:latest
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-srv
+  name: auth-srv
 spec:
   selector:
-    app: user
+    app: auth
   ports:
-    - name: user
+    - name: auth
       protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 4100
+      targetPort: 4100
