@@ -1,7 +1,10 @@
 import express from 'express'
+import { routes } from './routes'
 
 
 const app = express()
 const router = express.Router()
-app.use('/api')
+
+app.use('/api',routes())
+
 export {app}

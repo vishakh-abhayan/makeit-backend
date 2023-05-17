@@ -1,4 +1,4 @@
-import { ConsumerMessage } from "../common/subscribe";
+import { ConsumerMessage } from "../common/consumer";
 
 export default (topic:string) => {
     const signup = new ConsumerMessage()
