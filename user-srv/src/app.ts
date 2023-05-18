@@ -1,3 +1,4 @@
+
 import express from "express";
 import { json } from "body-parser";
 import depentencies from "./config/depentencies";
@@ -14,5 +15,5 @@ app.use('/api',routes(depentencies))
 // app.all('*',async(req,res)=>{
 //      throw new Error("not found")
 // })
+export { app } 
 
-export { app }
