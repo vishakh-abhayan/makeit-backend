@@ -1,8 +1,10 @@
-import { getAllUser_useCase } from "../libs/useCase/user/getAllUser_useCase";
+import { getAllUser_useCase,createNewUser_useCase,  getUserBy_Id_useCase } from "../libs/useCase/user";
 import { userRepository } from '../libs/app/repository/index'
 
 const userCase:any = {
-    getAllUser_useCase
+    getAllUser_useCase,
+    createNewUser_useCase,
+    getUserBy_Id_useCase
 }
 
 const repository:any={

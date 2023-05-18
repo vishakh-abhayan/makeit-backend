@@ -9,7 +9,7 @@ const router = express.Router();
 // app.set()
 app.use(json());
 
-app.use('/api/v1',routes(depentencies))
+app.use('/api',routes(depentencies))
 
 // app.all('*',async(req,res)=>{
 //      throw new Error("not found")
