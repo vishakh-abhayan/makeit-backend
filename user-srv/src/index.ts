@@ -1,9 +1,8 @@
 
 import { app } from "./app";
 import { dbConnect } from "./config/db";
-import { user } from '../src/libs/app/dataBase/mongodb/Schemas/user.schema'
 import dotenv from "dotenv";
-
+import { registerConsumer } from './events/consumer/index'
 dotenv.config();
 
 const start  = () =>{
@@ -13,12 +12,19 @@ const start  = () =>{
         console.error(err);
         
     }
-   
+  
+registerConsumer("REGISTER")
 
-    app.listen(3000,()=>{
-        console.log("db connected to");
+
+    app.listen(4000,()=>{
+        console.log("server started at 4000");
     })
-   
-}
+ 
+    
 
+
+
+
+
+}
 start()

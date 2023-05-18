@@ -1,4 +1,4 @@
-import mongoose,{Types} from 'mongoose'
+import mongoose,{ObjectId, Types} from 'mongoose'
 import { schems } from '../dataBase/mongodb'
 const {user} = schems
  
@@ -18,7 +18,17 @@ export default {
            const allUserdataObject = await user.find({})
            console.log(allUserdataObject,'alluserdataObject');
            return allUserdataObject
-    }
+    },
 
+    getUserByEmail:async(email:string)=>{
+                const userObjcet =  await user.findOne({email:email}).exec();
+                console.log(userObjcet,'userObject');
+                return userObjcet
+    },
+   
+    getUserById:async(id:string)=>{
+                const userObjcet = await user.findById({_id:new Types.ObjectId(id)});
+                return userObjcet
+    }
        
 }
