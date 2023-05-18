@@ -3,11 +3,14 @@ import { login_produce } from "../../../events/produce"
 
 
 export const login_UseCase = () => {
-    const topic='login'
-    const execute = (email:string,password:string)=>{
-        const data = {email,password}
-        login_produce(topic,data)
-        EventEmitter.on(topic,(data)=>{
+    const sendTopic='LOGIN'
+    const resTopic='LOGIN:RES'
+    const execute = (data:object)=>{
+        login_produce(sendTopic,data)
+        EventEmitter.on(resTopic,(data)=>{
+
+            // need to validate user
+            
             return data
         })
     }
@@ -15,4 +18,4 @@ export const login_UseCase = () => {
     return {
         execute
     }
-} 
+}  
