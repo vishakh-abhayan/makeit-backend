@@ -1,8 +1,13 @@
-import {createPost_useCase} from '../libs/usecase/index'
-
+import { createPost_useCase, updatePost_useCase,removePost_useCase } from '../libs/usecase'
+import { postRepository } from '../libs/app/repository'
 
 const useCase:any={
-    createPost_useCase
+    createPost_useCase,
+    updatePost_useCase,
+    removePost_useCase
+}
+const repository:any={
+    postRepository
 }
 
-export {useCase}
+export default {useCase,repository}

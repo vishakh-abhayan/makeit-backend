@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema({
     image:String,
     createdAt:Date,
     comments:Array<String>
-})
+},{versionKey:false})
 
 const Post = mongoose.model('posts',postSchema)
 

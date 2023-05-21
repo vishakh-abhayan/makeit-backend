@@ -1,5 +1,3 @@
-import { Post } from "./schemas/postSchema";
+import schemas from './schemas'
 
-export default {
-    Post
-}
+export {schemas}
