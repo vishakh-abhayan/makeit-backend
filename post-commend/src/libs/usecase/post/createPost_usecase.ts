@@ -10,14 +10,16 @@ const execute=async ({
     data,
     image
 }:postData)=>{
-    const post = {
+    const postDetails = {
         userId:userId,
         data:data,
         image:image,
         createdAt:new Date(),
-        comments:[]
+        comments:[],
+        likes:0
     }
-    const postdata = new Post({...post})
+    const postdata = new Post(postDetails)
+    console.log(postdata)
     return postRepository.createPost(postdata)
     
 }

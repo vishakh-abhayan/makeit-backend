@@ -1,3 +1,3 @@
 import { Post,postData } from "./postEntity";
-
-export {Post,postData}
+import { Comment, CommentData } from "./commentEntity";
+export {Post,postData,Comment,CommentData}

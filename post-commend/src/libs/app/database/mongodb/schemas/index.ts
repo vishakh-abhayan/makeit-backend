@@ -1,3 +1,3 @@
 import { Post } from "./postSchema";
-
-export default {Post}
+import { Comment } from "./commentSchema";
+export default {Post,Comment}

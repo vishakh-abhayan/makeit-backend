@@ -1,18 +1,20 @@
 import mongoose from 'mongoose'
 import {schemas} from '../database/mongodb'
+import { postData } from '../../entites'
 
 const {Post} = schemas
 
 export default {
     createPost:async(post:any)=>{
-        const postData={
+        const postData:postData={
             userId:post.userId,
             data:post.data,
             image:post.image,
-            createdAt: new Date(),
+            likes:post.likes,
+            createdAt: post.createdAt,
             comments:post.comments
         }
-        const postdata = Post.create(postData)
+        const postdata =await Post.create(postData)
         return postdata
     },
     updatePost:async(postId:string,fieldName:string,newValue:string)=>{
@@ -31,5 +33,72 @@ export default {
         }).catch((err)=>{
             return err
         })
+    },
+    getAllpostsByUser:async(userId:string)=>{
+        const posts = await Post.aggregate([
+            {
+                $match:{
+                    userId:userId
+                }
+            },
+            {
+                $lookup:{
+                    from:"comments",
+                    foreignField:"_id",
+                    localField:"comments",
+                    as:"comments"
+                }
+            }
+        ])
+        if(posts.length !== 0 ){
+            return posts
+        }
+        return null
+    },
+    getPostById:async (postId:string)=>{
+        const post = await Post.aggregate([
+            {
+                $match:{
+                    _id:new mongoose.Types.ObjectId(postId)
+                }
+            },
+            {
+                $lookup:{
+                    from:"comments",
+                    foreignField:"_id",
+                    localField:"comments",
+                    as:"comments"
+                }
+            }
+        ])
+        console.log(post);
+        
+        if(!post){  
+            return null
+        }
+        return post
+    },
+    getAllPosts:async ()=>{
+        const allPosts=await Post.find()
+        if(allPosts.length !== 0) return allPosts
+        return null
+        
+    },
+    changeLike:async (count:any,currLike:number,postId:string)=>{
+        let res=null
+        if(count == -1 && currLike > 0){
+          res =  await Post.updateOne({_id:new mongoose.Types.ObjectId(postId)},{
+                $inc:{
+                    likes:count
+                }
+            })
+        }else if(count == 1){
+            res = await Post.updateOne({_id: new mongoose.Types.ObjectId(postId)},{
+                $inc:{
+                    likes:count
+                }
+            })
+        }
+        return res
     }
 }
