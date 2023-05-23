@@ -1,3 +1,22 @@
-import { createPost_useCase } from "./post/createPost_usecase";
+import {
+  createPost_useCase,
+  updatePost_useCase,
+  removePost_useCase,
+  getAllPostByUser_useCase,
+  getPostById_useCase,
+  getAllPosts_useCase,
+  changeLike_useCase
+} from "./post";
 
-export {createPost_useCase}
+import { createComment_useCase, removeComment_useCase } from "./comment";
+export {
+  createPost_useCase,
+  updatePost_useCase,
+  removePost_useCase,
+  getAllPostByUser_useCase,
+  getPostById_useCase,
+  createComment_useCase,
+  removeComment_useCase,
+  getAllPosts_useCase,
+  changeLike_useCase
+};

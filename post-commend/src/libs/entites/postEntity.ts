@@ -3,7 +3,8 @@ export interface postData{
     data:string,
     image:string,
     createdAt:Date,
-    comments:Array<string>
+    comments:Array<string>,
+    likes:number
 }
 
 
@@ -12,12 +13,14 @@ export class Post{
     data:string;
     image:string;
     createdAt:Date;
-    comments:Array<string>
-    constructor({userId,data,image,createdAt,comments}:postData){
+    comments:Array<string>;
+    likes:number
+    constructor({userId,data,image,createdAt,comments,likes}:postData){
         this.userId=userId,
         this.data=data,
         this.image=image,
         this.createdAt=createdAt,
-        this.comments=comments
+        this.comments=comments,
+        this.likes=likes
     }
 }
