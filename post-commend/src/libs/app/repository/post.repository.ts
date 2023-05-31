@@ -73,10 +73,10 @@ export default {
         ])
         console.log(post);
         
-        if(!post){  
+        if(post.length === 0){  
             return null
         }
-        return post
+        return post[0]
     },
     getAllPosts:async ()=>{
         const allPosts=await Post.find()
