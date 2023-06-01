@@ -4,7 +4,8 @@ export interface postData{
     image:string,
     createdAt:Date,
     comments:Array<string>,
-    likes:number
+    likes:number,
+    files?:object
 }
 
 

@@ -14,8 +14,8 @@ const start  = () =>{
     }
   
 
-    app.listen(5100,()=>{
-        console.log("post server started at 5100");
+    app.listen(5400,()=>{
+        console.log("post server started at 5400");
     })
  
     
