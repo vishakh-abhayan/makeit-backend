@@ -1,4 +1,4 @@
-import { S3Client ,PutObjectCommand,GetObjectCommand} from "@aws-sdk/client-s3";
+import { S3Client ,PutObjectCommand,GetObjectCommand, DeleteObjectCommand} from "@aws-sdk/client-s3";
 import {getSignedUrl} from '@aws-sdk/s3-request-presigner'
 
 import dotenv from "dotenv";
@@ -35,4 +35,17 @@ export const getFile = async (getObjectParams:any)=>{
     const command:any = new GetObjectCommand(getObjectParams);
     const url = await getSignedUrl(client,command,{expiresIn:1000*60})
     return url
+}
+
+export const deleteFile = async (file:any)=>{
+    const command = new DeleteObjectCommand(file)
+    try {
+        const data = await client.send(command)
+        // process data.
+        return data
+      } catch (error) {
+        console.log(error);
+        // error handling.
+        return null
+      }
 }

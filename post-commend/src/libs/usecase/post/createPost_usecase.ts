@@ -17,7 +17,6 @@ const execute=async (data:any,file:any)=>{
     }
     const upload =await  uploadFile(params)
     console.log(upload);
-    
     const postDetails = {
         userId:data.userId,
         data:data.data,
