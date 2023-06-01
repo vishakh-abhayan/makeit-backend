@@ -17,10 +17,16 @@ export default {
         const postdata =await Post.create(postData)
         return postdata
     },
-    updatePost:async(postId:string,fieldName:string,newValue:string)=>{
-        const updateData: any = { $set: {} };
-        updateData.$set[fieldName] = newValue;
-        return Post.updateOne({_id:new mongoose.Types.ObjectId(postId)},updateData).then((res)=>{
+    updatePost:async(postId:string,data:string,image:string)=>{
+
+        return Post.updateOne({_id:new mongoose.Types.ObjectId(postId)},
+        {
+            $set:{
+                data:data,
+                image:image
+            }
+        }
+        ).then((res)=>{
             return res
         })
         .catch((err)=>{
